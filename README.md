@@ -2,7 +2,7 @@
 
 <div
  style="text-align:center">
- <img src="resource/logo.png"
+ <img src="src/main/resources/logo.png"
   alt="logo of application"      width="200"       style="border-radius:50%;" />
 </div>
 
