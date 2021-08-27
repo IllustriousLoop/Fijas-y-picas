@@ -26,10 +26,10 @@ public class App {
                         String num = "";
                         ai.showHistory();
                         for (Integer integer : list)
-                            num += integer < 10 ? Colors.GREEN(integer + "") : Colors.RED(integer + "");
+                            num += integer < 10 ? Colors.GREEN(integer) : Colors.RED(integer);
                         System.out.println(num);
                     }
-                    System.out.println("Enter " + Colors.CYAN((i + 1) + "") + " digit: ");
+                    System.out.println("Enter " + Colors.CYAN((i + 1)) + " digit: ");
                     int v = sc.nextInt();
                     if (v == 9501) {
                         System.out.println(ai.getNumberGuess() + " " + Colors.GREEN("is the number"));

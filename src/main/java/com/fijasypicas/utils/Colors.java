@@ -96,4 +96,68 @@ public class Colors {
 	public static String WHITE_BACKGROUND(String text) {
 		return WHITE_BACKGROUND + text + RESET;
 	};
+
+	public static String BLACK(int text) {
+		return BLACK + text + RESET;
+	}
+
+	public static String BLUE(int text) {
+		return BLUE + text + RESET;
+	};
+
+	public static String CYAN(int text) {
+		return CYAN + text + RESET;
+	};
+
+	public static String GREEN(int text) {
+		return GREEN + text + RESET;
+	};
+
+	public static String PURPLE(int text) {
+		return PURPLE + text + RESET;
+	};
+
+	public static String RED(int text) {
+		return RED + text + RESET;
+	};
+
+	public static String YELLOW(int text) {
+		return YELLOW + text + RESET;
+	};
+
+	public static String WHITE(int text) {
+		return WHITE + text + RESET;
+	};
+
+	public static String BLACK_BACKGROUND(int text) {
+		return BLACK_BACKGROUND + text + RESET;
+	};
+
+	public static String BLUE_BACKGROUND(int text) {
+		return BLUE_BACKGROUND + text + RESET;
+	};
+
+	public static String CYAN_BACKGROUND(int text) {
+		return CYAN_BACKGROUND + text + RESET;
+	};
+
+	public static String GREEN_BACKGROUND(int text) {
+		return GREEN_BACKGROUND + text + RESET;
+	};
+
+	public static String PURPLE_BACKGROUND(int text) {
+		return PURPLE_BACKGROUND + text + RESET;
+	};
+
+	public static String RED_BACKGROUND(int text) {
+		return RED_BACKGROUND + text + RESET;
+	};
+
+	public static String YELLOW_BACKGROUND(int text) {
+		return YELLOW_BACKGROUND + text + RESET;
+	};
+
+	public static String WHITE_BACKGROUND(int text) {
+		return WHITE_BACKGROUND + text + RESET;
+	};
 }
