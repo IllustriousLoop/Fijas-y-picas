@@ -24,6 +24,7 @@ public class App {
                 for (int i = 0; i < n; i++) {
                     if (list.size() > 0) {
                         String num = "";
+                        ai.showHistory();
                         for (Integer integer : list)
                             num += integer < 10 ? Colors.GREEN(integer + "") : Colors.RED(integer + "");
                         System.out.println(num);

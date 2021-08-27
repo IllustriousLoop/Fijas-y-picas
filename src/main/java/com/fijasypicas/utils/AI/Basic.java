@@ -43,18 +43,38 @@ public class Basic {
 		return prueba;
 	};
 
+	public void showHistory() {
+		if (history.size() > 0)
+			System.out.println(Colors.RED("🦖 History 🦴"));
+		for (int j = 0; j < history.size(); j++)
+			System.out.println(Colors.YELLOW((j + 1) + ") ") + history.get(j));
+		if (history.size() > 0)
+			System.out.println("\n 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧 \n");
+	}
+
+	private void updateHistory() {
+		String listString = "", emojiFijas = "", emojiPicas = "";
+		for (Integer s : arrayOfValues)
+			listString += s;
+		if (fijas != 0)
+			for (int i = 0; i < fijas; i++)
+				emojiFijas += " 🎯";
+		if (picas != 0)
+			for (int i = 0; i < picas; i++)
+				emojiPicas += " 🤡";
+		if (listString != "")
+			history.add(listString + emojiFijas + "  " + emojiPicas);
+	}
+
 	private void miniAI() {
 		boolean numberR = comprobar();
 		for (int i = 0; i < arrayComplex.size(); i++) {
 			ArrayList<Object> val = arrayComplex.get(i);
 			if (!numberR) {
 				if (i == numberMain - 1) {
-					String listString = "";
-					for (Integer s : arrayOfValues) {
-						listString += s;
-					}
-					history.add(listString);
-					System.out.println("Recuerda ninguna cifra se repite");
+					updateHistory();
+					System.out
+							.println(Colors.PURPLE_BACKGROUND(Colors.BLACK(" 💀💀 Remember no figure repeats 🚫🚫 ")));
 				}
 			} else {
 				if (val.get(0) == number.get(i)) {
@@ -65,23 +85,18 @@ public class Basic {
 					picas++;
 				}
 				if (i == numberMain - 1) {
-					String listString = "";
-					for (Integer s : arrayOfValues) {
-						listString += s;
-					}
-					history.add(listString);
+					updateHistory();
 					if (fijas == numberMain) {
 						System.out.println("¡¡¡GANASTE!!! 🚀");
 					} else {
-						System.out.println(Colors
-								.GREEN_BACKGROUND(Colors.BLACK("  Hay " + fijas + " fijas y " + picas + " picas  ")));
+						System.out.println(Colors.GREEN_BACKGROUND(
+								Colors.getBLACK() + "  There are " + Colors.getPURPLE() + fijas + Colors.getBLACK()
+										+ " fijas y " + Colors.getBLUE() + picas + Colors.getBLACK() + " picas  "));
 					}
 				}
 			}
 		}
-		System.out.println(Colors.RED("history"));
-		for (int j = 0; j < history.size(); j++)
-			System.out.println(Colors.YELLOW((j + 1) + ") ") + history.get(j));
+		showHistory();
 	};
 
 	public Basic(int nPrincipal) {
