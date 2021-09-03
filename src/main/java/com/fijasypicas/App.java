@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.fijasypicas.utils.ChoiseMenu;
 import com.fijasypicas.utils.Screen;
 import com.fijasypicas.utils.AI.Basic;
+import com.fijasypicas.utils.AI.Humans;
 import com.fijasypicas.utils.Colors;
 import com.fijasypicas.utils.ClearConsole;
 import java.util.ArrayList;
@@ -52,6 +53,24 @@ public class App {
         }
     }
 
+    private static void YouVsFriend() {
+        System.out.println("How many " + Colors.PURPLE("digits") + " is the number");
+        int n = sc.nextInt();
+        if (n >= 2 && n <= 8) {
+            System.out.println("How many " + Colors.PURPLE("persons") + " want play");
+            int p = sc.nextInt();
+            if (p == 2) {
+                new Humans(n);
+            } else {
+                System.out.println(Colors.RED("The number of persons must be 2"));
+                new ClearConsole(500);
+                YouVsFriend();
+            }
+        } else {
+            YouVsFriend();
+        }
+    }
+
     public static void main(String[] args) {
         Screen.Welcome();
         new ChoiseMenu(choices, "Choose your game mode: ");
@@ -61,10 +80,10 @@ public class App {
                 YouVsAI();
                 break;
             case 1:
-
+                YouVsFriend();
                 break;
             case 2:
-
+                System.out.println(Colors.GREEN_BACKGROUND(Colors.BLACK("Not implemented yet")));
                 break;
             default:
                 System.out.println(Colors.RED("Invalid option"));
