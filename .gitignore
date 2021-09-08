@@ -12,3 +12,10 @@
 # Maven
 log/
 target/
+
+#Javascript
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
