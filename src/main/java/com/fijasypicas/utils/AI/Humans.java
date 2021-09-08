@@ -185,32 +185,33 @@ public class Humans {
 		while (!isWinner) {
 			arrayOfValues.clear();
 			ArrayList<Integer> numberStake = new ArrayList<Integer>();
-			for (int i = 0; i < numberMain; i++) {
-				drawTurn();
-				if (numberStake.size() > 0) {
-					new ClearConsole();
-					drawTurn();
-					String num = "";
-					for (Integer integer : numberStake)
-						num += integer < 10 ? Colors.GREEN(integer) : Colors.RED(integer);
-					System.out.println(num);
-				}
-				System.out.println("Enter " + Colors.CYAN((i + 1)) + " digit: ");
-				int v = sc.nextInt();
-				if (v >= 10) {
-					i--;
-					System.out.println(
-							Colors.RED_BACKGROUND("The input ") + Colors.RED_BACKGROUND(Colors.BLUE(" " + v + " "))
-									+ Colors.RED_BACKGROUND(" is'n valid!!"));
-					new ClearConsole(500);
-				} else {
-					numberStake.add(v);
-					arrayOfValues.add(v);
-				}
-			}
-			nextTurn();
 			drawTurn();
-			finishTurn();
+			System.out.println("Enter " + numberMain + " digit: ");
+			int v = sc.nextInt();
+			int valid = String.valueOf(v).length();
+			if (valid < numberMain || valid > numberMain) {
+				System.out.println(Colors.RED_BACKGROUND("The number is bad"));
+			} else {
+				// split the int v in array
+				for (int i = 0; i < numberMain; i++) {
+					numberStake.add(v % 10);
+					arrayOfValues.add(v % 10);
+					v /= 10;
+				}
+				// invert the array
+				for (int i = 0; i < numberStake.size() / 2; i++) {
+					int temp = numberStake.get(i);
+					int temp2 = arrayOfValues.get(i);
+					numberStake.set(i, numberStake.get(numberStake.size() - i - 1));
+					arrayOfValues.set(i, arrayOfValues.get(arrayOfValues.size() - i - 1));
+
+					numberStake.set(numberStake.size() - i - 1, temp);
+					arrayOfValues.set(arrayOfValues.size() - i - 1, temp2);
+				}
+				nextTurn();
+				drawTurn();
+				finishTurn();
+			}
 		}
 		sc.close();
 	}

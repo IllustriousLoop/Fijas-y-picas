@@ -8,37 +8,36 @@ import com.fijasypicas.utils.Colors;
 
 public class Start {
 	static Scanner sc = new Scanner(System.in);
-	public static boolean Exit = false;
 
 	private static void YouVsAI(int n) {
 		Basic ai = new Basic(n);
+		ArrayList<Integer> list = new ArrayList<Integer>();
 		while (ai.fijas < n) {
-			ArrayList<Integer> list = new ArrayList<Integer>();
-			for (int i = 0; i < n; i++) {
-				if (list.size() > 0) {
-					String num = "";
-					ai.showHistory();
-					for (Integer integer : list)
-						num += integer < 10 ? Colors.GREEN(integer) : Colors.RED(integer);
-					System.out.println(num);
-				}
-				System.out.println("Enter " + Colors.CYAN((i + 1)) + " digit: ");
-				int v = sc.nextInt();
-				if (v == 9501) {
-					System.out.println(ai.getNumberGuess() + " " + Colors.GREEN("is the number"));
-					i--;
-				} else if (v >= 10) {
-					i--;
-					System.out.println(
-							Colors.RED_BACKGROUND("The input ") + Colors.RED_BACKGROUND(Colors.BLUE(" " + v + " "))
-									+ Colors.RED_BACKGROUND(" is'n valid!!"));
-					new ClearConsole(500);
-				} else {
-					list.add(v);
-					new ClearConsole();
-				}
+			list.clear();
+			System.out.println("Enter " + n + " digit: ");
+			int v = sc.nextInt();
+			int valid = String.valueOf(v).length();
+
+			if (v == 9501) {
+				System.out.println(ai.getNumberGuess() + " " + Colors.GREEN("is the number"));
 			}
-			ai.updateData(list);
+			if (valid < n || valid > n) {
+				System.out.println(Colors.RED_BACKGROUND("The number is bad"));
+			} else {
+				// split the int v in array
+				for (int i = 0; i < n; i++) {
+					list.add(v % 10);
+					v /= 10;
+				}
+				// invert the array
+				for (int i = 0; i < list.size() / 2; i++) {
+					int temp = list.get(i);
+					list.set(i, list.get(list.size() - i - 1));
+					list.set(list.size() - i - 1, temp);
+				}
+				new ClearConsole();
+				ai.updateData(list);
+			}
 		}
 	}
 
@@ -82,7 +81,6 @@ public class Start {
 			System.out.println(Colors.RED("Remember that the accepted values are N (2 ≤ N ≤ 8)"));
 			new ClearConsole(500);
 		}
-		Exit = true;
 	}
 
 }
