@@ -213,6 +213,5 @@ public class Humans {
 				finishTurn();
 			}
 		}
-		sc.close();
 	}
 }
